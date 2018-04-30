@@ -2,7 +2,7 @@
   <div class="wrapper">
     <app-header></app-header>
 
-    <app-sidebar></app-sidebar>
+    <app-sidebar :menu-list="menuList"></app-sidebar>
 
     <div class="content-wrapper">
       <app-content-header :pageTagsList="pageTagsList"></app-content-header>
@@ -30,6 +30,15 @@ export default {
     'app-content-header': ContentHeader
   },
   computed: {
+    menuList () {
+      return this.$store.state.app.menuList
+    },
+    currentPath () {
+      return this.$store.state.app.currentPath
+    },
+    cachePage () {
+      return this.$store.state.app.cachePage
+    },
     pageTagsList () {
       return this.$store.state.app.pageOpenedList // 打开的页面的页面对象
     }
